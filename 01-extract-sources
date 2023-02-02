@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+pushd sources
+
+for ARCHIVE in ../archive/*; do
+    tar -xvf $ARCHIVE
+done
+
+pushd awk
+
+git checkout 5e49ea4
+
+popd
+
+pushd sbase
+
+git checkout 191f7e6
+
+popd
+
+pushd ubase
+
+git checkout 3c88778
+
+git restore .
+
+sed -i '3 a #include <sys/sysmacros.h>' ./libutil/tty.c
+sed -i '3 a #include <sys/sysmacros.h>' ./mknod.c
+sed -i '3 a #include <sys/sysmacros.h>' ./mountpoint.c
+sed -i '3 a #include <sys/sysmacros.h>' ./stat.c
+
+popd
+
+popd
+

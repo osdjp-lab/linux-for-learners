@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+mkdir -pv isolinux
+
+pushd isolinux
+
+mkdir -pv ./{etc,var} ./usr/{bin,lib,sbin}
+
+for i in bin lib sbin; do
+  ln -sv ./usr/$i ./$i
+done
+
+mkdir -pv ./lib64
+
+popd

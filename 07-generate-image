@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+pushd ./isolinux
+
+xorriso \
+  -as mkisofs \
+  -o ../linux-for-learners.iso \
+  -b isolinux.bin \
+  -c boot.cat \
+  -no-emul-boot \
+  -boot-load-size 4 \
+  -boot-info-table \
+  ./
+
+popd

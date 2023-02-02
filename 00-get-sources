@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+mkdir -pv archive
+
+pushd archive
+
+wget -nc --input-file=../wget-sources --continue
+
+popd
+
+mkdir sources
+
+pushd sources
+
+GIT_SOURCES=$(cat ../git-sources)
+
+for URL in $GIT_SOURCES; do
+    REPO=$(printf "%s" $URL | sed "s/^.*\/\(.*\)$/\1/")
+    if [ ! -e $REPO ]; then
+        git clone $URL
+    else
+        printf "%s already exists.\n" $REPO
+    fi
+done
+
+popd
+
