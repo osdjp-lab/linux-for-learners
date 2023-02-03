@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-rm ./archive/*
-rm -rf ./sources/*

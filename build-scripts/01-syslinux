@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+cp ./bios/core/isolinux.bin ../../isoimage
+cp ./bios/com32/elflink/ldlinux/ldlinux.c32 ../../isoimage
+echo 'default kernel.gz initrd=rootfs.gz' > ../../isoimage/isolinux.cfg
+

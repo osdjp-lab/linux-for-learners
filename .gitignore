@@ -1,4 +1,5 @@
-./archive
-./sources
-./isolinux
-./*.iso
+archive/
+sources/
+rootfs/
+isoimage/
+*.iso

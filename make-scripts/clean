@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+for $DIR in ./sources/*; do
+    pushd $DIR
+    make clean
+    popd
+done

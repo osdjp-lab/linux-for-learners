@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-pushd ./sources/linux*
-
 make mrproper defconfig bzImage
-
-popd
+cp ./arch/x86/boot/bzImage ../../isoimage/kernel.gz
 

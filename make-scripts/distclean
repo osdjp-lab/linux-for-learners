@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+rm -rf ./archive
+rm -rf ./sources
+rm -rf ./rootfs
+rm -rf ./isoimage

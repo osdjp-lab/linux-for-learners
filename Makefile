@@ -1,17 +1,19 @@
 # Makefile for linux-for-learners
 
+MKSCRIPTS=./make-scripts
+
 build: clean
-	@./mk-scripts/build
+	$(MKSCRIPTS)/build
 
 clean:
-	@./mk-scripts/clean
+	$(MKSCRIPTS)/clean
 
 distclean:
-	@./mk-scripts/distclean
+	$(MKSCRIPTS)/distclean
 
 qemu:
-	@./mk-scripts/qemu
+	$(MKSCRIPTS)/qemu
 
 help:
-	@./mk-scripts/help
+	$(MKSCRIPTS)/help
 	

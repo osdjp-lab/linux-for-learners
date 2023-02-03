@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+./configure --prefix=$(realpath ../../rootfs/usr/local)
+make
+make install
+ln -svr ../../rootfs/usr/local/bin/dash ../../rootfs/usr/local/bin/sh
