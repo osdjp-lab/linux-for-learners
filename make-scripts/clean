@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-for $DIR in ./sources/*; do
-    pushd $DIR
-    make clean
-    popd
-done
+rm -rf ./isoimage
+rm -rf ./rootfs
+rm ./linux-for-learners.iso
+

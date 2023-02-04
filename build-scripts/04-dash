@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-./configure --prefix=$(realpath ../../rootfs/usr/local)
+./configure --bindir=$(realpath ../../rootfs/bin) \
+            --mandir=$(realpath ../../rootfs/usr/share/man) \
+            --enable-static
+
 make
 make install
-ln -svr ../../rootfs/usr/local/bin/dash ../../rootfs/usr/local/bin/sh
+ln -svr ../../rootfs/usr/bin/dash ../../rootfs/usr/bin/sh

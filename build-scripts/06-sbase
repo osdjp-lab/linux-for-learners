@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-make DESTDIR=../../rootfs install
+make DESTDIR=../../rootfs PREFIX=/usr install
