@@ -1,7 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 rm -rf ../archive
 rm -rf ../sources
 rm -rf ../rootfs
 rm -rf ../isoimage
-rm ../linux-for-learners.iso
+rm -f ../linux-for-learners.iso

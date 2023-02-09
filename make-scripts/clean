@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 rm -rf ./isoimage
 rm -rf ./rootfs
-rm ./linux-for-learners.iso
+rm -f ./linux-for-learners.iso
 
