@@ -1,1 +1,5 @@
 #!/usr/bin/env bash
+
+# Configuration failure if prefix path doesn't exist
+./configure --prefix=$(realpath "../../rootfs/usr")
+make LDFLAGS='-static' install

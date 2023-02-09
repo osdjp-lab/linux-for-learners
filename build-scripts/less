@@ -1,1 +1,4 @@
 #!/usr/bin/env bash
+
+./configure --prefix=$(realpath ../../rootfs/usr)
+make LDFLAGS='-static' install

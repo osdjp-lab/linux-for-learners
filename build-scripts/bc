@@ -1,1 +1,4 @@
 #!/usr/bin/env bash
+
+./configure --disable-nls --prefix="../../rootfs/usr" 
+make LDFLAGS='-static' install
