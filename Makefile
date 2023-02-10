@@ -2,20 +2,20 @@
 
 MAKE-SCRIPTS=./make-scripts
 
-build: clean
+build:
 	$(MAKE-SCRIPTS)/build
-
-qemu: build
-	$(MAKE-SCRIPTS)/qemu
-
-chroot: build
-	$(MAKE-SCRIPTS)/chroot
 
 clean:
 	$(MAKE-SCRIPTS)/clean
 
 distclean:
 	$(MAKE-SCRIPTS)/distclean
+
+qemu:
+	$(MAKE-SCRIPTS)/qemu
+
+chroot:
+	$(MAKE-SCRIPTS)/chroot
 
 help:
 	$(MAKE-SCRIPTS)/help

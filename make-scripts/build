@@ -2,6 +2,6 @@
 
 for SCRIPT in [0-9][0-9]-*; do
     printf "%s\n" $SCRIPT
-    #  bash $SCRIPT
+    bash $SCRIPT
 done
 
