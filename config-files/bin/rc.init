@@ -33,7 +33,7 @@ cd - 1>/dev/null
 : > /var/run/utmp
 
 # Starting TTY's
-/bin/sh -c '/bin/respawn /bin/getty /dev/tty1 linux' &>/dev/null &
-/bin/sh -c '/bin/respawn /bin/getty /dev/tty2 linux' &>/dev/null &
-/bin/sh -c '/bin/respawn /bin/getty /dev/tty3 linux' &>/dev/null &
-/bin/sh -c '/bin/respawn /bin/getty /dev/tty4 linux' &>/dev/null &
+/bin/sh -c '/bin/respawn /bin/getty /dev/tty1 linux /bin/sh' &>/dev/null &
+/bin/sh -c '/bin/respawn /bin/getty /dev/tty2 linux /bin/sh' &>/dev/null &
+/bin/sh -c '/bin/respawn /bin/getty /dev/tty3 linux /bin/sh' &>/dev/null &
+/bin/sh -c '/bin/respawn /bin/getty /dev/tty4 linux /bin/sh' &>/dev/null &
