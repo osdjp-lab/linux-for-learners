@@ -23,7 +23,11 @@ printf "Shutting down\n"
 /bin/mount -o remount,ro /
 
 # Unmounting filesystems
-/bin/umount -a
+# /bin/umount -a
+/bin/umount /proc
+/bin/umount /sys
+/bin/umount /dev/pts
+/bin/umount /dev
 
 # Writing changes to disk
 /bin/sync
