@@ -1,0 +1,41 @@
+#!/bin/sh
+
+umask 022
+
+# Checking validity of arguments
+case "$1" in
+reboot|poweroff)
+	;;
+*)
+	printf "Invalid action '%s' for rc.shutdown\n" $1 1>&2
+	exit 1
+	;;
+esac
+
+printf "Shutting down\n"
+
+# Closing down all processes
+/bin/killall5 -s TERM
+/bin/sleep 3
+/bin/killall5 -s KILL
+
+# Remounting root as read-only
+/bin/mount -o remount,ro /
+
+# Unmounting filesystems
+/bin/umount -a
+
+# Writing changes to disk
+/bin/sync
+/bin/sleep 3
+wait
+
+# Rebooting or shutting down
+case "$1" in
+reboot)
+	/bin/halt -r
+	;;
+poweroff)
+	/bin/halt -p
+	;;
+esac

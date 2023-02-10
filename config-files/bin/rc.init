@@ -1,0 +1,39 @@
+#!/bin/sh
+
+umask 022
+
+printf "Booting Linux for Learners\n"
+
+# Setting soft reboot on ctrl-alt-del
+/bin/ctrlaltdel -s
+
+# Mounting filesystems
+/bin/mount -n -t proc -o nosuid,noexec,nodev proc /proc
+/bin/mount -n -t sysfs -o nosuid,noexec,nodev sysfs /sys
+/bin/mount -n -t devtmpfs -o nosuid,mode=0755 dev /dev
+/bin/mkdir -p /dev/pts
+/bin/mount -n -t devpts -o gid=5,mode=0620 devpts /dev/pts
+/bin/mount -o remount,rw /
+
+# Setting logging level
+/bin/dmesg -n 1
+
+# Setting up I/O streams
+cd /dev
+/bin/ln -sf /proc/self/fd/0 stdin
+/bin/ln -sf /proc/self/fd/1 stdout
+/bin/ln -sf /proc/self/fd/2 stderr
+/bin/ln -sf /proc/self/fd fd
+cd - 1>/dev/null
+
+# Storing dmesg output to /var/log/dmesg.log
+/bin/dmesg > /var/log/dmesg.log
+
+# Clearing utmp
+: > /var/run/utmp
+
+# Starting TTY's
+/bin/sh -c '/bin/respawn /bin/getty /dev/tty1 linux' &>/dev/null &
+/bin/sh -c '/bin/respawn /bin/getty /dev/tty2 linux' &>/dev/null &
+/bin/sh -c '/bin/respawn /bin/getty /dev/tty3 linux' &>/dev/null &
+/bin/sh -c '/bin/respawn /bin/getty /dev/tty4 linux' &>/dev/null &
