@@ -15,7 +15,7 @@ qemu:
 	$(MAKE-SCRIPTS)/qemu
 
 chroot:
-	$(MAKE-SCRIPTS)/chroot
+	sudo $(MAKE-SCRIPTS)/chroot
 
 help:
 	$(MAKE-SCRIPTS)/help
