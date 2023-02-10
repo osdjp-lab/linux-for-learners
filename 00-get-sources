@@ -2,15 +2,15 @@
 
 mkdir -pv archive
 
-pushd archive
+pushd archive > /dev/null
 
 wget -nc --input-file=../wget-sources --continue
 
-popd
+popd > /dev/null
 
-mkdir sources
+mkdir -pv sources
 
-pushd sources
+pushd sources > /dev/null
 
 GIT_SOURCES=$(cat ../git-sources)
 
@@ -23,5 +23,6 @@ for URL in $GIT_SOURCES; do
     fi
 done
 
-popd
+popd > /dev/null
+
 

@@ -2,7 +2,7 @@
 
 mkdir -pv rootfs
 
-pushd rootfs
+pushd rootfs > /dev/null
 
 mkdir -pv ./{etc,var} ./usr/{bin,lib,sbin}
 for i in bin lib sbin; do
@@ -29,4 +29,4 @@ ln -srfv ./run/lock ./var/lock
 install -dv -m 0750 ./root
 install -dv -m 1777 ./tmp ./var/tmp
 
-popd
+popd > /dev/null

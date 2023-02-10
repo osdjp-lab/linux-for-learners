@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-pushd rootfs
+pushd rootfs > /dev/null
 
 # Packaging of rootfs into compressed archive
 find . | cpio -R root:root -H newc -o | gzip > ../isoimage/rootfs.gz
 
-popd
+popd > /dev/null
 
-pushd isoimage
+pushd isoimage > /dev/null
 
 # Packaging of system into iso image
 xorriso \
@@ -20,4 +20,4 @@ xorriso \
   -boot-info-table \
   ./
 
-popd
+popd > /dev/null
