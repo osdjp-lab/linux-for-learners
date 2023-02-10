@@ -1,13 +1,4 @@
-#!/usr/bin/env bash
-
-# Setting of init script
-cat > ../../rootfs/init << EOF
 #!/bin/sh
-dmesg -n 1
-mount -t devtmpfs none /dev
-mount -t proc none /proc
-mount -t sysfs none /sys
-setsid getty /bin/sh
-EOF
-chmod +x ../../rootfs/init
 
+make DESTDIR=../../rootfs PREFIX=/usr install
+ln -sr ../../rootfs/bin/sinit ../../rootfs/init
