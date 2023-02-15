@@ -2,7 +2,7 @@
 
 mkdir -pv isoimage 
 
-for SCRIPT in ./build-scripts/[0-9][0-9]*; do
+for SCRIPT in ./pkg-scripts/[0-9][0-9]*; do
     COMMANDS=$(cat $SCRIPT)
     pushd $(echo "./sources/$(basename $SCRIPT | sed "s/[0-9][0-9]-\(.*\)/\1/"  )*") > /dev/null
     printf "%s" "${COMMANDS}" | bash
