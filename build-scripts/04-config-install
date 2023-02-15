@@ -3,3 +3,4 @@
 for DIR in bin etc; do
     cp ./config-files/$DIR/* ./rootfs/$DIR
 done
+

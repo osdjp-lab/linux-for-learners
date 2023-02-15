@@ -8,3 +8,4 @@ for SCRIPT in ./pkg-scripts/[0-9][0-9]*; do
     printf "%s" "${COMMANDS}" | bash
     popd > /dev/null
 done
+
