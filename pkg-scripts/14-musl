@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+./configure --disable-shared                  \
+            --prefix=../../rootfs/usr/        \
+            --syslibdir=../../rootfs/usr/lib
+
+make install
