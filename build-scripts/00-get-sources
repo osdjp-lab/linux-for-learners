@@ -4,7 +4,7 @@ mkdir -pv archive
 
 pushd archive > /dev/null
 
-wget -nc --input-file=../wget-sources --continue
+wget -nc --input-file=../src-lists/wget-sources --continue
 
 popd > /dev/null
 
@@ -12,7 +12,7 @@ mkdir -pv sources
 
 pushd sources > /dev/null
 
-GIT_SOURCES=$(cat ../git-sources)
+GIT_SOURCES=$(cat ../src-lists/git-sources)
 
 for URL in $GIT_SOURCES; do
     REPO=$(printf "%s" $URL | sed "s/^.*\/\(.*\)$/\1/")
