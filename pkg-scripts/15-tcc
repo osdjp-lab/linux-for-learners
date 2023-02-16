@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+./configure --cc="gcc -static"   \
+            --enable-static      \
+            --prefix=/usr        \
+            --docdir=/usr/share  \
+            --libpaths=/usr/lib
+
+make
+
+PREFIX=../../rootfs/usr
+DOCDIR=../../rootfs/usr/share
+
+mkdir -p "$PREFIX/bin" && cp -vf tcc "$PREFIX/bin"
+mkdir -p "$PREFIX/lib/tcc" && cp -vf libtcc1.a "$PREFIX/lib/tcc"
+mkdir -p "$PREFIX/lib/tcc/include" && cp -vf ./include/*.h ./tcclib.h "$PREFIX/lib/tcc/include"
+mkdir -p "$PREFIX/lib" && cp -vf libtcc.a "$PREFIX/lib"
+mkdir -p "$PREFIX/include" && cp -vf ./libtcc.h "$PREFIX/include"
+mkdir -p "$DOCDIR/man/man1" && cp -vf tcc.1 "$DOCDIR/man/man1"
+
