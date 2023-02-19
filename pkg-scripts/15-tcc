@@ -1,10 +1,27 @@
 #!/usr/bin/env bash
 
-./configure --cc="gcc -static"   \
-            --enable-static      \
-            --prefix=/usr        \
-            --docdir=/usr/share  \
-            --libpaths=/usr/lib
+sed -i \
+    -e '975c//    if ((output_type == TCC_OUTPUT_EXE || output_type == TCC_OUTPUT_DLL) &&' \
+    -e '976c//        !s->nostdlib) {' \
+    -e '977c//        if (output_type != TCC_OUTPUT_DLL)' \
+    -e '978c//            tcc_add_crt(s, "crt1.o");' \
+    -e '979c//        tcc_add_crt(s, "crti.o");' \
+    -e '980c//    }' \
+    libtcc.c
+
+sed -i \
+    -e '1205c//        if (s1->output_type != TCC_OUTPUT_MEMORY)' \
+    -e '1206c//            tcc_add_crt(s1, "crtn.o");' \
+    tccelf.c
+
+./configure --cc="gcc -static"                                 \
+            --enable-static                                    \
+            --prefix=/usr                                      \
+            --docdir=/usr/share                                \
+            --libdir=/usr/lib                                  \
+            --sysincludepaths=/opt/diet/include:/usr/include   \
+            --libpaths=/opt/diet/lib-x86_64:/usr/lib           \
+            --crtprefix="./"
 
 make
 

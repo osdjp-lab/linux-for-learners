@@ -6,6 +6,12 @@ for ARCHIVE in ../archive/*; do
     tar -xvf $ARCHIVE
 done
 
+pushd dietlibc* > /dev/null
+
+sed -i '4 c DESTDIR=../../rootfs' ./Makefile
+
+popd > /dev/null
+
 pushd awk > /dev/null
 
 git checkout 5e49ea4
