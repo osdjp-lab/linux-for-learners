@@ -4,24 +4,24 @@ make
 
 DESTDIR=../../rootfs
 PREFIX=/opt/diet
-BINDIR=$PREFIX/bin
-MAN1DIR=usr/share/man/man1
+BINDIR="$PREFIX/bin"
+MAN1DIR=/usr/share/man/man1
 ARCH=$(uname -m | sed -e 's/i[4-9]86/i386/' -e 's/armv[3-7]t\?e\?[lb]/arm/')
-OBJDIR=bin-$(ARCH)
-LIBDIR=$PREFIX/lib-$(ARCH)
+OBJDIR="bin-$ARCH"
+LIBDIR="$PREFIX/lib-$ARCH"
 
 # install-bin
-install -d $(DESTDIR)$(LIBDIR) $(DESTDIR)$(MAN1DIR) $(DESTDIR)$(BINDIR)
-install -m 644 $(OBJDIR)/start.o $(DESTDIR)$(LIBDIR)/crt0.o
-install -m 644 $(OBJDIR)/libm.a $(OBJDIR)/libpthread.a $(OBJDIR)/librpc.a \
-$(OBJDIR)/liblatin1.a $(OBJDIR)/libcompat.a $(OBJDIR)/libcrypt.a $(DESTDIR)$(LIBDIR)
-install -m 644 $(OBJDIR)/dietlibc.a $(DESTDIR)$(LIBDIR)/libc.a
-install $(OBJDIR)/diet-i $(DESTDIR)$(BINDIR)/diet
-install -m 755 $(OBJDIR)/elftrunc $(OBJDIR)/dnsd $(DESTDIR)$(BINDIR)
-install -m 644 diet.1 $(DESTDIR)$(MAN1DIR)/diet.1
+install -d "$DESTDIR$LIBDIR" "$DESTDIR$MAN1DIR" "$DESTDIR$BINDIR"
+install -m 644 "$OBJDIR/start.o" "$DESTDIR$LIBDIR/crt0.o"
+install -m 644 "$OBJDIR/libm.a" "$OBJDIR/libpthread.a" "$OBJDIR/librpc.a" \
+"$OBJDIR/liblatin1.a" "$OBJDIR/libcompat.a" "$OBJDIR/libcrypt.a" "$DESTDIR$LIBDIR"
+install -m 644 "$OBJDIR/dietlibc.a" "$DESTDIR$LIBDIR/libc.a"
+install "$OBJDIR/diet-i" "$DESTDIR$BINDIR/diet"
+install -m 755 "$OBJDIR/elftrunc" "$OBJDIR/dnsd" "$DESTDIR$BINDIR"
+install -m 644 "diet.1" "$DESTDIR$MAN1DIR/diet.1"
 
 # install-headers
 for i in $(find include -name \*.h); do
-    install -m 644 -D $i $(DESTDIR)$(PREFIX)/$i
+    install -m 644 -D $i "$DESTDIR$PREFIX/$i"
 done
 
