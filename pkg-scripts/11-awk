@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-make CFLAGS='-static'
-cp ./a.out ../../rootfs/bin/awk
-

@@ -6,12 +6,6 @@ for ARCHIVE in ../archive/*; do
     tar -xvf $ARCHIVE
 done
 
-pushd awk > /dev/null
-
-git checkout 5e49ea4
-
-popd > /dev/null
-
 pushd sbase > /dev/null
 
 git checkout 191f7e6
