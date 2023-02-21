@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-git checkout 191f7e6
+if ! [[ -e sbase-box ]]; then
+    git checkout 191f7e6
+fi
 
 make DESTDIR=../../rootfs PREFIX=/usr LDFLAGS='-static' sbase-box-install
 

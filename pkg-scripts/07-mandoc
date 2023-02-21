@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-./configure
+if ! [[ -e Makefile.local ]]; then
+    ./configure
+fi
 
 make LDFLAGS='-static'     \
      DESTDIR=../../rootfs  \

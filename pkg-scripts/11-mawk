@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-./configure --prefix=/usr
+if ! [[ -e Makefile ]]; then
+    ./configure --prefix=/usr
+fi
 
 make DESTDIR=../../rootfs LDFLAGS='-static' install
 

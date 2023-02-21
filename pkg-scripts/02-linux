@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-make mrproper defconfig bzImage
+if ! [[ -e .config ]]; then
+    make mrproper defconfig
+fi
+
+make bzImage
 
 cp ./arch/x86/boot/bzImage ../../isoimage/kernel.gz
 

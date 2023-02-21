@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-# Configuration failure if prefix path doesn't exist
-./configure --prefix=$(realpath "../../rootfs/usr")
+if ! [[ -e Makefile ]]; then
+    # Configuration failure if prefix path doesn't exist
+    ./configure --prefix=$(realpath "../../rootfs/usr")
+fi
 
 make LDFLAGS='-static' install
 

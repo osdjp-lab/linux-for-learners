@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-./configure --bindir=$(realpath ../../rootfs/bin)           \
-            --mandir=$(realpath ../../rootfs/usr/share/man) \
-            --enable-static
+if ! [[ -e Makefile ]]; then
+    ./configure --bindir=$(realpath ../../rootfs/bin)           \
+                --mandir=$(realpath ../../rootfs/usr/share/man) \
+                --enable-static
+fi
 
 make
 make install

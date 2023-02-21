@@ -3,7 +3,11 @@
 pushd sources > /dev/null
 
 for ARCHIVE in ../archive/*; do
-    tar -xvf $ARCHIVE
+    PKG_NAME_REGEX="$(basename $ARCHIVE | sed 's/\(.*\)-.*/\1/')*"
+    PKG_NAME=$(find . -maxdepth 1 -type d -name $PKG_NAME_REGEX)
+    if [[ -z $PKG_NAME ]]; then
+        tar -xvf $ARCHIVE
+    fi
 done
 
 popd > /dev/null

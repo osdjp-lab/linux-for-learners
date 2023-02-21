@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-./configure --disable-nls --prefix="../../rootfs/usr" 
+if ! [[ -e Makefile ]]; then
+    ./configure --disable-nls --prefix="../../rootfs/usr"
+fi
 
 make LDFLAGS='-static' install
 

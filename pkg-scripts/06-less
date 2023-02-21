@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-./configure --prefix=$(realpath ../../rootfs/usr)
+if ! [[ -e Makefile ]]; then
+    ./configure --prefix=$(realpath ../../rootfs/usr)
+fi
 
 make LDFLAGS='-static' install
 
