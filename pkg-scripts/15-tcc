@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 
 sed -i \
-    -e '975c//    if ((output_type == TCC_OUTPUT_EXE || output_type == TCC_OUTPUT_DLL) &&' \
-    -e '976c//        !s->nostdlib) {' \
     -e '977c//        if (output_type != TCC_OUTPUT_DLL)' \
     -e '978c//            tcc_add_crt(s, "crt1.o");' \
     -e '979c//        tcc_add_crt(s, "crti.o");' \
-    -e '980c//    }' \
+    -e '980c    tcc_add_crt(s, "crt0.o");}' \
     libtcc.c
 
 sed -i \
@@ -21,7 +19,7 @@ sed -i \
             --libdir=/usr/lib                                  \
             --sysincludepaths=/opt/diet/include:/usr/include   \
             --libpaths=/opt/diet/lib-x86_64:/usr/lib           \
-            --crtprefix="./"
+            --crtprefix=/opt/diet/lib-x86_64
 
 make
 
