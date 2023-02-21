@@ -3,3 +3,4 @@
 ./configure --prefix=/usr
 
 make DESTDIR=../../rootfs LDFLAGS='-static' install
+

@@ -7,3 +7,4 @@
 make
 make install
 ln -svr ../../rootfs/usr/bin/dash ../../rootfs/usr/bin/sh
+

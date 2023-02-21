@@ -3,3 +3,4 @@
 git checkout 191f7e6
 
 make DESTDIR=../../rootfs PREFIX=/usr LDFLAGS='-static' sbase-box-install
+

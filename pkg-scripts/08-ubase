@@ -13,3 +13,4 @@ sed -i '3 a #include <sys/sysmacros.h>' ./mountpoint.c
 sed -i '3 a #include <sys/sysmacros.h>' ./stat.c
 
 make DESTDIR=../../rootfs PREFIX=/usr LDFLAGS='-static' ubase-box-install
+

@@ -2,14 +2,14 @@
 
 sed -i \
     -e '977c//        if (output_type != TCC_OUTPUT_DLL)' \
-    -e '978c//            tcc_add_crt(s, "crt1.o");' \
-    -e '979c//        tcc_add_crt(s, "crti.o");' \
-    -e '980c    tcc_add_crt(s, "crt0.o");}' \
+    -e '978c//            tcc_add_crt(s, "crt1.o");'      \
+    -e '979c//        tcc_add_crt(s, "crti.o");'          \
+    -e '980c    tcc_add_crt(s, "crt0.o");}'               \
     libtcc.c
 
 sed -i \
     -e '1205c//        if (s1->output_type != TCC_OUTPUT_MEMORY)' \
-    -e '1206c//            tcc_add_crt(s1, "crtn.o");' \
+    -e '1206c//            tcc_add_crt(s1, "crtn.o");'            \
     tccelf.c
 
 ./configure --cc="gcc -static"                                 \

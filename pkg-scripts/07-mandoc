@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 ./configure
+
 make LDFLAGS='-static'     \
      DESTDIR=../../rootfs  \
      BINDIR=/usr/bin       \
      SBINDIR=/usr/sbin     \
      MANDIR=/usr/share/man install
+
