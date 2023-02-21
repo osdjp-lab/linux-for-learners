@@ -2,7 +2,10 @@
 
 git checkout 3c88778
 
-git restore .
+git restore ./libutil/tty.c \
+            ./mknod.c       \
+            ./mountpoint.c  \
+            ./stat.c
 
 sed -i '3 a #include <sys/sysmacros.h>' ./libutil/tty.c
 sed -i '3 a #include <sys/sysmacros.h>' ./mknod.c
