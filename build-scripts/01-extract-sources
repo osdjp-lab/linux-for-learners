@@ -6,30 +6,5 @@ for ARCHIVE in ../archive/*; do
     tar -xvf $ARCHIVE
 done
 
-pushd dietlibc* > /dev/null
-
-sed -i '4 c DESTDIR=../../rootfs' ./Makefile
-
-popd > /dev/null
-
-pushd sbase > /dev/null
-
-git checkout 191f7e6
-
-popd > /dev/null
-
-pushd ubase > /dev/null
-
-git checkout 3c88778
-
-git restore .
-
-sed -i '3 a #include <sys/sysmacros.h>' ./libutil/tty.c
-sed -i '3 a #include <sys/sysmacros.h>' ./mknod.c
-sed -i '3 a #include <sys/sysmacros.h>' ./mountpoint.c
-sed -i '3 a #include <sys/sysmacros.h>' ./stat.c
-
-popd > /dev/null
-
 popd > /dev/null
 
