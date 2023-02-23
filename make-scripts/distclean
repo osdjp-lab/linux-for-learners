@@ -1,7 +1,7 @@
 #!/bin/sh
 
-rm -rf ../archive
-rm -rf ../sources
-rm -rf ../rootfs
-rm -rf ../isoimage
-rm -f ../linux-for-learners.iso
+rm -vrf ./archive
+rm -vrf ./sources
+rm -vrf ./rootfs
+rm -vrf ./isoimage
+rm -vf ./linux-for-learners.iso
