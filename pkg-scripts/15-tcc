@@ -37,3 +37,5 @@ mkdir -p "$PREFIX/lib" && cp -vf libtcc.a "$PREFIX/lib"
 mkdir -p "$PREFIX/include" && cp -vf ./libtcc.h "$PREFIX/include"
 mkdir -p "$DOCDIR/man/man1" && cp -vf tcc.1 "$DOCDIR/man/man1"
 
+cp /lib64/ld-linux-x86-64.so.2 ../../rootfs/lib64
+
