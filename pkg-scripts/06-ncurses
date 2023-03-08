@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+sed -i s/mawk// configure
+
+mkdir -pv build
+
+pushd build
+
+if ! [[ -e Makefile ]]; then
+    ../configure
+fi
+
+make -C include
+make -C progs tic LDFLAGS='-static'
+
+popd
+
+if ! [[ -e Makefile ]]; then
+    ./configure --prefix=/usr                \
+                --mandir=/usr/share/man      \
+                --with-manpage-format=normal \
+                --without-normal             \
+                --without-debug              \
+                --without-ada                \
+                --disable-stripping          \
+                --enable-widec
+fi
+
+make LDFLAGS='-static'
+
+make DESTDIR=$(realpath ../../rootfs) TIC_PATH=$(pwd)/build/progs/tic install
+
