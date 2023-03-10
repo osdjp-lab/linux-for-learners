@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-make DESTDIR=../../rootfs PREFIX=/usr install
+make DESTDIR=$(realpath ../../rootfs) PREFIX=/usr install
 
 ln -sr ../../rootfs/bin/sinit ../../rootfs/init
 

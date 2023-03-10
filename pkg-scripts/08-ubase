@@ -14,5 +14,5 @@ if ! [[ -e ubase-box ]]; then
     sed -i '3 a #include <sys/sysmacros.h>' ./stat.c
 fi
 
-make DESTDIR=../../rootfs PREFIX=/usr LDFLAGS='-static' ubase-box-install
+make DESTDIR=$(realpath ../../rootfs) PREFIX=/usr LDFLAGS='-static' ubase-box-install
 

@@ -2,7 +2,7 @@
 
 make
 
-DESTDIR=../../rootfs
+DESTDIR=$(realpath ../../rootfs)
 PREFIX=/opt/diet
 BINDIR="$PREFIX/bin"
 MAN1DIR=/usr/share/man/man1

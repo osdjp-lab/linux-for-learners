@@ -4,9 +4,9 @@ if ! [[ -e Makefile.local ]]; then
     ./configure
 fi
 
-make LDFLAGS='-static'     \
-     DESTDIR=../../rootfs  \
-     BINDIR=/usr/bin       \
-     SBINDIR=/usr/sbin     \
+make LDFLAGS='-static'                \
+     DESTDIR=$(realpath ../../rootfs) \
+     BINDIR=/usr/bin                  \
+     SBINDIR=/usr/sbin                \
      MANDIR=/usr/share/man install
 
