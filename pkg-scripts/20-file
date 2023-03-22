@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if ! [[ -e Makefile ]]; then
+    ./configure --prefix=/usr     \
+                --disable-shared  \
+                --enable-static   \
+                LDFLAGS=--static
+fi
+
+make DESTDIR=$(realpath ../../rootfs) install
+
