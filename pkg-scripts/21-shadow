@@ -11,8 +11,10 @@ if ! [[ -e Makefile ]]; then
                 --disable-shared                 \
                 --enable-static                  \
                 --with-group-name-max-length=32  \
+                CC='musl-gcc'                    \
                 LDFLAGS=--static
 fi
 
 make DESTDIR=$(realpath ../../rootfs) install
+make -C man DESTDIR=$(realpath ../../rootfs) install-man
 
