@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+ROOT=./rootfs
+
+# Copying of chroot-scripts into rootfs/usr/src
+
+cp -r ./chroot-scripts/ $ROOT/usr/src/
+
+# Mounting of virtual kernel filesystems
+sudo mount -o bind /dev $ROOT/dev
+sudo mount -o bind /dev/pts $ROOT/dev/pts
+sudo mount -t proc proc $ROOT/proc
+sudo mount -o bind /sys $ROOT/sys
+
+# Chroot
+sudo chroot $ROOT /bin/sh -x << EOF
+sh /usr/src/chroot-scripts/0-chroot-init
+EOF
+
+sleep 1
+
+# Cleanup
+sudo umount $ROOT/dev/pts
+sudo umount $ROOT/dev
+sudo umount $ROOT/sys
+sudo umount $ROOT/proc
+

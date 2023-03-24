@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+for SCRIPT in /usr/src/chroot-scripts/[1-9]*; do
+    sh $SCRIPT
+done
+

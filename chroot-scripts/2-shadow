@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+mkdir -p /etc/default
+useradd -D --gid 999
+sed '/MAIL/s/yes/no/' /etc/default/useradd | sponge /etc/default/useradd
+echo "root:" | chpasswd
+
