@@ -10,7 +10,7 @@ cp -r ./chroot-scripts/ $ROOT/usr/src/
 sudo mount -o bind /dev $ROOT/dev
 sudo mount -o bind /dev/pts $ROOT/dev/pts
 sudo mount -t proc proc $ROOT/proc
-sudo mount -o bind /sys $ROOT/sys
+sudo mount -t sysfs /sys $ROOT/sys
 
 # Chroot
 sudo chroot $ROOT /bin/sh -x << EOF

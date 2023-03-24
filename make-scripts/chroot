@@ -6,7 +6,7 @@ ROOT=./rootfs
 mount -o bind /dev $ROOT/dev
 mount -o bind /dev/pts $ROOT/dev/pts
 mount -t proc proc $ROOT/proc
-mount -o bind /sys $ROOT/sys
+mount -t sysfs /sys $ROOT/sys
 
 # Entering chroot
 chroot $ROOT /bin/sh
