@@ -1,6 +1,6 @@
 #!/bin/sh
 
-rm -rf ./isoimage
-rm -rf ./rootfs
-rm -f ./linux-for-learners.iso
+rm -vrf ./isoimage
+sudo rm -vrf ./rootfs
+rm -vf ./linux-for-learners.iso
 

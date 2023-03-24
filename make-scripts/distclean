@@ -2,6 +2,6 @@
 
 rm -vrf ./archive
 rm -vrf ./sources
-rm -vrf ./rootfs
+sudo rm -vrf ./rootfs
 rm -vrf ./isoimage
 rm -vf ./linux-for-learners.iso
