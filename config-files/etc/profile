@@ -1,0 +1,7 @@
+# /etc/profile: system-wide .profile file for shells.
+
+PATH=/usr/sbin:/usr/bin
+MANPATH=/usr/share/man
+export PATH MANPATH
+
+umask 022
