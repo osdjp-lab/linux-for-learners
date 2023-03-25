@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for DIR in bin etc; do
-    cp ./config-files/$DIR/* ./rootfs/$DIR
+for DIR in bin etc root; do
+    cp -r ./config-files/$DIR/. ./rootfs/$DIR
 done
 
