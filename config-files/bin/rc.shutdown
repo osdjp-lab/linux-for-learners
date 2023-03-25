@@ -16,7 +16,7 @@ printf "Shutting down\n"
 
 # Closing down all processes
 /bin/killall5 -s TERM
-/bin/sleep 3
+/bin/sleep 1
 /bin/killall5 -s KILL
 
 # Remounting root as read-only
@@ -31,7 +31,7 @@ printf "Shutting down\n"
 
 # Writing changes to disk
 /bin/sync
-/bin/sleep 3
+/bin/sleep 1
 wait
 
 # Rebooting or shutting down

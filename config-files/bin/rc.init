@@ -4,6 +4,9 @@ umask 022
 
 printf "Booting Linux for Learners\n"
 
+# Setting hostname
+hostname lfl
+
 # Setting soft reboot on ctrl-alt-del
 /bin/ctrlaltdel -s
 
