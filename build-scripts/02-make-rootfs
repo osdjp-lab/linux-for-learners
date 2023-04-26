@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+umask 0022
+
 mkdir -pv rootfs
 
 pushd rootfs > /dev/null
