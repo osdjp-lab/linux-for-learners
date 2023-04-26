@@ -4,7 +4,7 @@ ROOT=./rootfs
 
 # Copying of chroot-scripts into rootfs/usr/src
 
-cp -r ./chroot-scripts/ $ROOT/usr/src/
+sudo cp -r ./chroot-scripts/ $ROOT/usr/src/
 
 # Mounting of virtual kernel filesystems
 sudo mount -o bind /dev $ROOT/dev

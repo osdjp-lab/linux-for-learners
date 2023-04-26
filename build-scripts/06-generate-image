@@ -3,7 +3,7 @@
 pushd rootfs > /dev/null
 
 # Packaging of rootfs into compressed archive
-find . | sudo cpio -R root:root -H newc -o | gzip > ../isoimage/rootfs.gz
+sudo find . | sudo cpio -R root:root -H newc -o | gzip > ../isoimage/rootfs.gz
 
 popd > /dev/null
 
