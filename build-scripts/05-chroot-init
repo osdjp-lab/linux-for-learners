@@ -13,8 +13,12 @@ sudo mount -t proc proc $ROOT/proc
 sudo mount -t sysfs /sys $ROOT/sys
 
 # Chroot
-sudo chroot $ROOT /bin/sh -x << EOF
-sh /usr/src/chroot-scripts/0-chroot-init
+sudo chroot $ROOT /bin/env -i  \
+HOME=/root                     \
+TERM=linux                     \
+PATH=/usr/bin:/usr/sbin        \
+/bin/sh << EOF
+sh -x /usr/src/chroot-scripts/0-chroot-init
 EOF
 
 sleep 1
