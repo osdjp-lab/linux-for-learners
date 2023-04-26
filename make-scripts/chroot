@@ -9,7 +9,7 @@ mount -t proc proc $ROOT/proc
 mount -t sysfs /sys $ROOT/sys
 
 # Entering chroot
-chroot $ROOT /bin/sh
+chroot $ROOT /bin/login
 
 # Cleanup
 umount $ROOT/dev/pts
