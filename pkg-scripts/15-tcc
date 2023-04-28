@@ -13,7 +13,7 @@ if ! [[ -e config.mak ]]; then
         -e '1206c//            tcc_add_crt(s1, "crtn.o");'            \
         tccelf.c
 
-    ./configure --cc="gcc -static"                                 \
+    ./configure --cc="musl-gcc -static"                            \
                 --enable-static                                    \
                 --prefix=/usr                                      \
                 --docdir=/usr/share                                \

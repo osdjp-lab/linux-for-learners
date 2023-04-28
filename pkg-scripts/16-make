@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
 if ! [[ -e Makefile ]]; then
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr CC=musl-gcc LDFLAGS='-static'
 fi
 
-make LDFLAGS='-static'
 make DESTDIR=$(realpath ../../rootfs) install
 
