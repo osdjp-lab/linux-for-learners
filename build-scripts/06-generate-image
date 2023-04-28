@@ -10,7 +10,7 @@ popd > /dev/null
 pushd isoimage > /dev/null
 
 # Packaging of system into iso image
-xorriso \
+sudo xorriso \
   -as mkisofs \
   -o ../linux-for-learners.iso \
   -b isolinux.bin \
