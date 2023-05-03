@@ -6,7 +6,7 @@ for DIR in bin etc root; do
 done
 
 # Change of file and directory ownership
-sudo chown -R root:root ./rootfs/{boot,media,mnt,opt,srv,root}
+sudo chown -R root:root ./rootfs/{boot,media,mnt,opt,root}
 sudo chown -R root:root ./rootfs/{etc,lib64,usr,var}
 sudo chown root:root ./rootfs/{dev,home,run,proc,sys,tmp}
 sudo chown -h root:root ./rootfs/{bin,init,lib,sbin}
