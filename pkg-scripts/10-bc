@@ -4,5 +4,6 @@ if ! [[ -e Makefile ]]; then
     ./configure --disable-nls --prefix="../../rootfs/usr"
 fi
 
-make LDFLAGS='-static' install
+make LDFLAGS='-static'
+make install
 
