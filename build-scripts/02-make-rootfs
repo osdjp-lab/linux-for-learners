@@ -6,23 +6,31 @@ mkdir -pv rootfs
 
 pushd rootfs > /dev/null
 
-mkdir -pv ./{etc,var} ./usr/{bin,lib,sbin}
-for i in bin lib sbin; do
-  ln -sv ./usr/$i ./$i
-done
-mkdir -pv ./lib64
+# Creation of directories
 
+mkdir -pv ./{etc,var}
 mkdir -pv ./{dev,proc,sys,run,media}
 mkdir -pv ./{boot,home,mnt,opt}
+
 mkdir -pv ./usr/{include,src}
+mkdir -pv ./usr/{bin,lib,lib64,sbin}
 mkdir -pv ./usr/share/{info,locale,man}
 mkdir -pv ./usr/share/{misc,terminfo}
 mkdir -pv ./usr/share/man/man{1..8}
+
 mkdir -pv ./var/{cache,log,opt,spool}
 mkdir -pv ./var/lib/misc
 
+# Creation of directory links
+
+for i in bin lib lib64 sbin; do
+  ln -sv ./usr/$i ./$i
+done
+
 ln -srfv ./run ./var/run
 ln -srfv ./run/lock ./var/lock
+
+# Creation of directories with special permissions
 
 install -dv -m 0750 ./root
 install -dv -m 1777 ./tmp ./var/tmp
