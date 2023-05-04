@@ -2,6 +2,9 @@
 
 pushd sources > /dev/null
 
+# Extraction of each archive from the archive directory
+# into the sources directory
+
 for ARCHIVE in ../archive/*; do
     PKG_NAME_REGEX="$(basename $ARCHIVE | sed 's/\(.*\)-.*/\1/')*"
     PKG_NAME=$(find . -maxdepth 1 -type d -name $PKG_NAME_REGEX)

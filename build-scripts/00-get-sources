@@ -4,6 +4,8 @@ mkdir -pv archive
 
 pushd archive > /dev/null
 
+# Acquisition of compressed archives
+
 wget -nc --input-file=../src-lists/wget-sources --continue
 
 popd > /dev/null
@@ -11,6 +13,8 @@ popd > /dev/null
 mkdir -pv sources
 
 pushd sources > /dev/null
+
+# Acquisition of git repositories
 
 GIT_SOURCES=$(cat ../src-lists/git-sources)
 

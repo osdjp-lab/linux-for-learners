@@ -3,6 +3,7 @@
 pushd rootfs > /dev/null
 
 # Packaging of rootfs into compressed archive
+
 sudo find . | sudo cpio -R root:root -H newc -o | gzip > ../isoimage/rootfs.gz
 
 popd > /dev/null
@@ -10,6 +11,7 @@ popd > /dev/null
 pushd isoimage > /dev/null
 
 # Packaging of system into iso image
+
 sudo xorriso \
   -as mkisofs \
   -o ../linux-for-learners.iso \

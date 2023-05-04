@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 # Installation of configuration files
+
 for DIR in bin etc root; do
     cp -r ./config-files/$DIR/. ./rootfs/$DIR
 done
 
 # Change of file and directory ownership
+
 sudo chown -R root:root ./rootfs/{boot,media,mnt,opt,root}
 sudo chown -R root:root ./rootfs/{etc,lib64,usr,var}
 sudo chown root:root ./rootfs/{dev,home,run,proc,sys,tmp}
