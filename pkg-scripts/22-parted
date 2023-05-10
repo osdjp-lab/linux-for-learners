@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+sed -e '146s/^\(\/\*\)*/\/*/' \
+    -e '146s/\(\*\/\)*$/*\//' \
+    -i ./lib/stdio.in.h
+
+sed -e '/#include <sys\/sysmacros.h>/d' \
+    -e '24a #include <sys/sysmacros.h>' \
+    -i ./libparted/arch/linux.c
+
+if ! [[ -e Makefile ]]; then
+    ./configure --prefix=/usr             \
+                --disable-device-mapper   \
+                --disable-shared          \
+                --enable-static           \
+                --without-readline        \
+                --disable-Werror          \
+                --disable-dynamic-loading \
+                LDFLAGS=--static
+fi
+
+make DESTDIR=$(realpath ../../rootfs) install
+
