@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+sed -e '/#include <sys\/sysmacros.h>/d' \
+    -e '43a #include <sys/sysmacros.h>' \
+    -i ./extlinux/main.c
+
+if ! [[ $(ldd ./bios/linux/syslinux 2>&1) == $(ldd ./bios/mbr/mbr.bin 2>&1) ]]; then
+    make clean
+    make installer LDFLAGS=-static
+fi
+
+make install INSTALLROOT=$(realpath ../../rootfs) MANDIR=/usr/share/man
+
 cp ./bios/core/isolinux.bin ../../isoimage
 cp ./bios/com32/elflink/ldlinux/ldlinux.c32 ../../isoimage
 echo 'default kernel.gz initrd=rootfs.gz' > ../../isoimage/isolinux.cfg
