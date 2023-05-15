@@ -1,0 +1,45 @@
+#!/usr/bin/env sh
+
+# Partitioning of hard drive
+
+parted -s /dev/sda \
+mklabel gpt \
+mkpart primary ext2 0% 100% \
+set 1 boot on \
+mkfs 1 ext2 \
+quit
+
+# Mounting of iso image and hard drive partition
+
+mkdir /mnt/iso
+mount -t iso9660 -o ro /dev/sr0 /mnt/iso
+
+mkdir /mnt/root
+mount -t ext2 -o rw /dev/sda1 /mnt/root
+
+# Cloning of root filesystem
+
+gzip -dc /mnt/iso/rootfs.gz | cpio -ivD /mnt/root
+
+# Creation of bootloader installation directory
+
+mkdir /mnt/root/boot/extlinux
+
+# Installation of bootloader
+
+extlinux --install /mnt/root/boot/extlinux
+
+# Extlinux configuration
+
+cat > /mnt/root/boot/extlinux/extlinux.conf << EOF
+DEFAULT linux
+LABEL linux
+ SAY Now booting the kernel from SYSLINUX...
+ KERNEL kernel.gz
+ APPEND rw root=/dev/sda1 noinitrd console=ttyS0,9600
+EOF
+
+# Installation of bootstrap code
+
+dd bs=440 count=1 conv=notrunc if=/usr/share/syslinux/gptmbr.bin of=/dev/sda
+
