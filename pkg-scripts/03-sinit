@@ -3,4 +3,5 @@
 make DESTDIR=$(realpath ../../rootfs) PREFIX=/usr install
 
 ln -sr ../../rootfs/bin/sinit ../../rootfs/init
+ln -sr ../../rootfs/bin/sinit ../../rootfs/bin/init
 
