@@ -2,7 +2,7 @@
 
 # Installation of configuration files
 
-for DIR in bin etc root usr; do
+for DIR in bin etc root; do
     cp -r ./config-files/$DIR/. ./rootfs/$DIR
 done
 
