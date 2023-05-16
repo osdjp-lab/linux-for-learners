@@ -5,7 +5,7 @@
 parted -s /dev/sda \
 mklabel gpt \
 mkpart primary ext2 0% 100% \
-set 1 boot on \
+set 1 legacy_boot on \
 mkfs 1 ext2 \
 quit
 
@@ -29,14 +29,18 @@ mkdir /mnt/root/boot/extlinux
 
 extlinux --install /mnt/root/boot/extlinux
 
+# Installation of Linux kernel
+
+cp /mnt/iso/kernel.gz /mnt/root/boot/extlinux
+
 # Extlinux configuration
 
 cat > /mnt/root/boot/extlinux/extlinux.conf << EOF
 DEFAULT linux
 LABEL linux
- SAY Now booting the kernel from SYSLINUX...
+ SAY Now booting the kernel from EXTLINUX...
  KERNEL kernel.gz
- APPEND rw root=/dev/sda1 noinitrd console=ttyS0,9600
+ APPEND rw root=/dev/sda1
 EOF
 
 # Installation of bootstrap code
