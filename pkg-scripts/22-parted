@@ -1,42 +1,45 @@
 #!/usr/bin/env bash
 
-# Gnulib patches
+# Patching and configuration
 
-sed -e '34s/ftrylockfile/EOF_SEEN/' \
-    -e '141s/ftrylockfile/EOF_SEEN/' \
-    -i ./lib/fflush.c
+if ! [[ -e Makefile ]]; then
 
-sed -e '64s/ftrylockfile/EOF_SEEN/' \
-    -i ./lib/fpurge.c
+    # Gnulib patches
 
-sed -e '34s/ftrylockfile/EOF_SEEN/' \
-    -i ./lib/freading.c
+    sed -e '34s/ftrylockfile/EOF_SEEN/' \
+        -e '141s/ftrylockfile/EOF_SEEN/' \
+        -i ./lib/fflush.c
 
-sed -e '45s/ftrylockfile/EOF_SEEN/' \
-    -e '111s/ftrylockfile/EOF_SEEN/' \
-    -i ./lib/fseeko.c
+    sed -e '64s/ftrylockfile/EOF_SEEN/' \
+        -i ./lib/fpurge.c
 
-sed -e '20a /* Glibc 2.28 made _IO_IN_BACKUP private.  For now, work around this \
+    sed -e '34s/ftrylockfile/EOF_SEEN/' \
+        -i ./lib/freading.c
+
+    sed -e '45s/ftrylockfile/EOF_SEEN/' \
+        -e '111s/ftrylockfile/EOF_SEEN/' \
+        -i ./lib/fseeko.c
+
+    sed -e '20a /* Glibc 2.28 made _IO_IN_BACKUP private.  For now, work around this \
    problem by defining it ourselves.  FIXME: Do not rely on glibc \
    internals.  */ \
 #if !defined _IO_IN_BACKUP && defined _IO_EOF_SEEN \
 # define _IO_IN_BACKUP 0x100 \
 #endif' \
-    -i ./lib/stdio-impl.h
+        -i ./lib/stdio-impl.h
 
-sed -e '738s/^\(\/\*\)*/\/*/' \
-    -e '738s/\(\*\/\)*$/*\//' \
-    -i ./lib/stdio.in.h
+    sed -e '738s/^\(\/\*\)*/\/*/' \
+        -e '738s/\(\*\/\)*$/*\//' \
+        -i ./lib/stdio.in.h
 
-# Libparted patches
+    # Libparted patches
 
-sed -e '/#include <sys\/sysmacros.h>/d' \
+    sed -e '/#include <sys\/sysmacros.h>/d' \
     -e '24a #include <sys/sysmacros.h>' \
     -i ./libparted/arch/linux.c
 
-# Configuration and make
+    # Configuration
 
-if ! [[ -e Makefile ]]; then
     ./configure --prefix=/usr             \
                 --disable-device-mapper   \
                 --disable-shared          \
@@ -46,6 +49,8 @@ if ! [[ -e Makefile ]]; then
                 --disable-dynamic-loading \
                 LDFLAGS=--static
 fi
+
+# Make and install
 
 make DESTDIR=$(realpath ../../rootfs) install
 
