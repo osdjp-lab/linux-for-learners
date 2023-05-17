@@ -9,7 +9,7 @@ if ! [[ $(ldd ./bios/linux/syslinux 2>&1) == $(ldd ./bios/mbr/mbr.bin 2>&1) ]]; 
     make installer LDFLAGS=-static
 fi
 
-make install INSTALLROOT=$(realpath ../../rootfs) MANDIR=/usr/share/man
+make install LDFLAGS=-static INSTALLROOT=$(realpath ../../rootfs) MANDIR=/usr/share/man
 
 cp ./bios/core/isolinux.bin ../../isoimage
 cp ./bios/com32/elflink/ldlinux/ldlinux.c32 ../../isoimage
