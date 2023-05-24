@@ -1,4 +1,11 @@
 #!/bin/sh
 
+# VGA
 qemu-system-x86_64 -m 512M -cdrom linux-for-learners.iso -boot d -vga std
+
+# Serial
+# qemu-system-x86_64 -kernel isoimage/kernel.gz -initrd isoimage/rootfs.gz -append 'root=/dev/sda console=ttyS0' -nographic -m 512M -serial mon:stdio
+
+# Curses
+# qemu-system-x86_64 -kernel isoimage/kernel.gz -initrd isoimage/rootfs.gz -append 'root=/dev/sda' -curses -m 512M -serial stdio
 
