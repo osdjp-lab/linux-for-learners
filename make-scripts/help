@@ -1,3 +1,10 @@
 #!/bin/sh
 
+printf "%s\n" "Available make targets:"
+printf "%s\n" "   build - (default target) build the lfl system"
+printf "%s\n" "   chroot - chroot into the created rootfs"
+printf "%s\n" "   clean - remove the isoimage and rootfs directories as well as the linux-for-learners.iso"
+printf "%s\n" "   distclean - remove all dynamically created directories and files"
+printf "%s\n" "   help - print a list of make targets with short descriptions"
+printf "%s\n" "   qemu - run created system in a virtual machine via QEMU"
 
