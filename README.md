@@ -18,3 +18,9 @@ Debian GNU/Linux 11:
 - sudo
 - xorriso
 
+## QEMU requirements
+
+Debian GNU/Linux 11:
+
+- qemu-system-x86
+
