@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+sed -e '/The name this program was run with/d' \
+    -e '/char \*program_name;/d' \
+    -i ./src/global.c
+
 if ! [[ -e Makefile ]]; then
     ./configure --prefix=/usr CC=musl-gcc LDFLAGS='-static'
 fi
