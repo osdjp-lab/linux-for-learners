@@ -2,6 +2,8 @@
 
 MAKE-SCRIPTS=./make-scripts
 
+.PHONY: build clean distclean qemu chroot help
+
 build:
 	$(MAKE-SCRIPTS)/build
 
