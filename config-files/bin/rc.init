@@ -36,6 +36,7 @@ cd - 1>/dev/null
 : > /var/run/utmp
 
 # Starting TTY's
+/bin/sh -c '/bin/respawn /bin/getty /dev/ttyS0 linux /bin/login' &>/dev/null &
 /bin/sh -c '/bin/respawn /bin/getty /dev/tty1 linux /bin/login' &>/dev/null &
 /bin/sh -c '/bin/respawn /bin/getty /dev/tty2 linux /bin/login' &>/dev/null &
 /bin/sh -c '/bin/respawn /bin/getty /dev/tty3 linux /bin/login' &>/dev/null &
