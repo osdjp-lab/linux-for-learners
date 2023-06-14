@@ -3,5 +3,7 @@
 mkdir -p /etc/default
 useradd -D --gid 999
 sed '/MAIL/s/yes/no/' /etc/default/useradd | sponge /etc/default/useradd
+sed '/SHELL/s/bash/sh/' /etc/default/useradd | sponge /etc/default/useradd
+sed '/CREATE_HOME/s/#//' /etc/login.defs | sponge /etc/login.defs
 echo "root:" | chpasswd
 
